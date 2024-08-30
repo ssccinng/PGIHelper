@@ -114,7 +114,10 @@ class PGIGripper:
     def read_current_position(self):
         result = self.client.read_holding_registers(0x0202, 1, slave=self.slave)
         return result.registers[0]
-
+        
+    def read_current_current(self):
+        result = self.client.read_holding_registers(0x0204, 1, slave=self.slave)
+        return result.registers[0]
 
     def write_to_flash(self, save):
         if save in [0, 1]:
